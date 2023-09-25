@@ -1,0 +1,42 @@
+# Complete documentation available under
+# https://pre-commit.com/
+repos:
+-   repo: https://github.com/ambv/black
+    rev: 23.3.0
+    hooks:
+    - id: black
+      args: [--check, --diff, --config=./backend/pyproject.toml]
+      language_version: python3.10
+      stages: [push]
+- repo: https://github.com/astral-sh/ruff-pre-commit
+  # Ruff version.
+  rev: v0.0.291
+  hooks:
+    - id: ruff
+      args: [--fix, --exit-non-zero-on-fix]    
+      stages: [push]
+- repo: https://github.com/rtts/djhtml
+  rev: 3.0.6
+  hooks:
+    - id: djhtml
+      file: .*/templates/.*\html$
+      stages: [push]
+      exclude: |
+        (?x)^(
+           .*/node_modules/.* |
+        )$
+    - id: djcss
+      entry: djcss --tabwidth 2
+      exclude: |
+        (?x)^(
+            .*/node_modules/.* |
+          )$
+      types: [scss]
+      stages: [push]
+
+    - id: djjs
+      exclude: |
+        (?x)^(
+            .*/node_modules/.* |
+          )$
+      stages: [push]

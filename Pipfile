@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django-treebeard = "*"
+django = "*"
+django-dirtyfields = "*"
+ambient-toolbox = "*"
+
+[dev-packages]
+black = "*"
+isort = "*"
+ruff = "*"
+pre-commit = "*"
+
+[requires]
+python_version = "3.10"

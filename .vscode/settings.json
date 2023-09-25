@@ -1,0 +1,4 @@
+{
+    "python.pipenvPath": "/home/codespace/.local/share/virtualenvs/webapp-JZFRbuKG",
+    "terminal.integrated.cwd": "${workspaceFolder}/backend"
+}
