@@ -8,6 +8,7 @@ django-treebeard = "*"
 django = "*"
 django-dirtyfields = "*"
 ambient-toolbox = "*"
+django-safedelete = "*"
 
 [dev-packages]
 black = "*"
