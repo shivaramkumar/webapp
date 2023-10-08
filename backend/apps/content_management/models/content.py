@@ -1,18 +1,39 @@
+import timezone
 from django.conf import settings
 from django.db import models
+from django.utils.text import get_valid_filename
 from django.utils.translation import gettext as _
 
 from apps.content_management.models.node import BlogNode, NodeType
 from apps.core.models import BaseModel
 
 
-class BaseLanguageBasedContentModel(BaseModel):
+class BaseContentModel(BaseModel):
+
+    node = models.ForeignKey(BlogNode, on_delete=models.CASCADE)
+
+    @staticmethod
+    def upload_location(instance: models.Model, filename: str) -> str:
+        now = timezone.now()
+        data_sub_str = f"{now.year}/{now.month}/{now.day}"
+        return f"uploads/{instance._meta.default_related_name}/{data_sub_str}/{get_valid_filename(filename)}"
+
+    def __str__(self) -> str:
+        return f"{self.node}-content"
+
+    class Meta:
+        abstract = True
+
+
+class BaseLanguageBasedContentModel(BaseContentModel):
     """
     Base language model
     """
 
-    language_code = models.CharField(choices=settings.LANGUAGES,max_length=25)
-    node = models.ForeignKey(BlogNode, on_delete=models.CASCADE)
+    language_independent = models.BooleanField(
+        default=False, help_text=_("Select this option, if you want to disable language dependency instance wise")
+    )
+    language_code = models.CharField(choices=settings.LANGUAGES, max_length=25)
 
     def __str__(self) -> str:
         return f"{self.node}-{self.language_code}-content"
@@ -50,7 +71,14 @@ class BaseUrlContentModel(BaseLanguageBasedContentModel):
 
 
 class BlogArticle(BaseTextContentModel):
-    node =  models.ForeignKey(BlogNode, on_delete=models.CASCADE,limit_choices_to={"node_type":NodeType.ARTICLE.value})
+    """
+    BlogArticle
+
+    Args:
+        BaseTextContentModel (extends): 
+    """
+    node = models.ForeignKey(BlogNode, on_delete=models.CASCADE, limit_choices_to={"node_type": NodeType.ARTICLE})
+
     class Meta:
         verbose_name = _("Blog Article")
         verbose_name_plural = _("Blog Articles")
