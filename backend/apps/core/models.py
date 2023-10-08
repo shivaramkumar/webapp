@@ -6,3 +6,6 @@ from safedelete.models import SafeDeleteModel
 
 class BaseModel(SafeDeleteModel, DirtyFieldsMixin, CommonInfo):
     _safedelete_policy = SOFT_DELETE
+
+    class Meta:
+        abstract = True
