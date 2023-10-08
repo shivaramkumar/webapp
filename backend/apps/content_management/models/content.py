@@ -2,7 +2,7 @@ from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext as _
 
-from apps.content_management.models.node import BlogNode
+from apps.content_management.models.node import BlogNode, NodeType
 from apps.core.models import BaseModel
 
 
@@ -11,8 +11,8 @@ class BaseLanguageBasedContentModel(BaseModel):
     Base language model
     """
 
-    language_code = models.CharField(choices=settings.LANGUAGES)
-    node = models.models.ForeignKey(BlogNode, on_delete=models.CASCADE)
+    language_code = models.CharField(choices=settings.LANGUAGES,max_length=25)
+    node = models.ForeignKey(BlogNode, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
         return f"{self.node}-{self.language_code}-content"
@@ -50,6 +50,7 @@ class BaseUrlContentModel(BaseLanguageBasedContentModel):
 
 
 class BlogArticle(BaseTextContentModel):
+    node =  models.ForeignKey(BlogNode, on_delete=models.CASCADE,limit_choices_to={"node_type":NodeType.ARTICLE.value})
     class Meta:
         verbose_name = _("Blog Article")
         verbose_name_plural = _("Blog Articles")

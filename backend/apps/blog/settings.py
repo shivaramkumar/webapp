@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "treebeard",
+    'safedelete',
     "apps.blog",
     "apps.account",
     "apps.content_management",
