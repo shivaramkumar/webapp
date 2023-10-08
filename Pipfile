@@ -4,11 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django-treebeard = "*"
-django = "*"
-django-dirtyfields = "*"
-ambient-toolbox = "*"
-django-safedelete = "*"
+django-treebeard        = "==4.7.*"         # Django tree structure app           
+django                  = "==4.2.*"         # Django main package
+django-dirtyfields      = "==1.9.*"         # Django track changed fields in a model
+ambient-toolbox         = "==9.1.*"         # Ambient toolbox for web apps
+django-safedelete       = "==1.3.*"         # Django safedelete - configurable safe/ hard delete
+django-extensions       = "==3.2.*"         # Django cli extensions and slug implementation
 
 [dev-packages]
 black = "*"

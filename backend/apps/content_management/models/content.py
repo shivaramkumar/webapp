@@ -1,6 +1,6 @@
-import timezone
 from django.conf import settings
 from django.db import models
+from django.utils import timezone
 from django.utils.text import get_valid_filename
 from django.utils.translation import gettext as _
 
@@ -9,7 +9,6 @@ from apps.core.models import BaseModel
 
 
 class BaseContentModel(BaseModel):
-
     node = models.ForeignKey(BlogNode, on_delete=models.CASCADE)
 
     @staticmethod
@@ -75,8 +74,9 @@ class BlogArticle(BaseTextContentModel):
     BlogArticle
 
     Args:
-        BaseTextContentModel (extends): 
+        BaseTextContentModel (extends):
     """
+
     node = models.ForeignKey(BlogNode, on_delete=models.CASCADE, limit_choices_to={"node_type": NodeType.ARTICLE})
 
     class Meta:
