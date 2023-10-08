@@ -18,7 +18,12 @@ class Image(BaseContentModel):
     )
     slug = AutoSlugField(null=True, default=None, unique=True, populate_from="caption")
 
+    def __str__(self) -> str:
+        if self.node:
+            return f"{self.caption} - {self.node}"
+        return self.caption
+
     class Meta:
-        vorbose_name = _("Image")
+        verbose_name = _("Image")
         verbose_name_plural = _("Images")
         default_related_name = "images"

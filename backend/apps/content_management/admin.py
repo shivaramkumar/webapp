@@ -3,6 +3,7 @@ from treebeard.admin import TreeAdmin
 from treebeard.forms import movenodeform_factory
 
 from apps.content_management.models.content import BlogArticle
+from apps.content_management.models.image import Image
 from apps.content_management.models.node import BlogNode
 
 
@@ -17,3 +18,8 @@ class BlogArticleAdmin(admin.ModelAdmin):
         "name",
         "language_code",
     )
+
+
+@admin.register(Image)
+class ImageAdmin(admin.ModelAdmin):
+    search_fields = ("node__name", "caption")
