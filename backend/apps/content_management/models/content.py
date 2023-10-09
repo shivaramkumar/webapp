@@ -30,7 +30,10 @@ class BaseLanguageBasedContentModel(BaseContentModel):
     """
 
     language_independent = models.BooleanField(
-        default=False, help_text=_("Select this option, if you want to disable language dependency instance wise")
+        default=False,
+        help_text=_(
+            "Select this option, if you want to disable language dependency instance wise"
+        ),
     )
     language_code = models.CharField(choices=settings.LANGUAGES, max_length=25)
 
@@ -77,7 +80,11 @@ class BlogArticle(BaseTextContentModel):
         BaseTextContentModel (extends):
     """
 
-    node = models.ForeignKey(BlogNode, on_delete=models.CASCADE, limit_choices_to={"node_type": NodeType.ARTICLE})
+    node = models.ForeignKey(
+        BlogNode,
+        on_delete=models.CASCADE,
+        limit_choices_to={"node_type": NodeType.ARTICLE},
+    )
 
     class Meta:
         verbose_name = _("Blog Article")

@@ -12,8 +12,12 @@ class NodeType(models.IntegerChoices):
 
 
 class BlogNode(BaseModel, MP_Node):
-    name = models.CharField(max_length=40, help_text=_("enter a name for the node element"))
-    node_type = models.IntegerField(choices=NodeType.choices, help_text=_("enter the type of node"))
+    name = models.CharField(
+        max_length=40, help_text=_("enter a name for the node element")
+    )
+    node_type = models.IntegerField(
+        choices=NodeType.choices, help_text=_("enter the type of node")
+    )
 
     def __str__(self) -> str:
         return self.name

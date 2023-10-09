@@ -4,15 +4,17 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('content_management', '0003_alter_blogarticle_node'),
+        ("content_management", "0003_alter_blogarticle_node"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='blogarticle',
-            name='language_independent',
-            field=models.BooleanField(default=False, help_text='Select this option, if you want to disable language dependency instance wise'),
+            model_name="blogarticle",
+            name="language_independent",
+            field=models.BooleanField(
+                default=False,
+                help_text="Select this option, if you want to disable language dependency instance wise",
+            ),
         ),
     ]

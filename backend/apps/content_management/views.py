@@ -1,3 +1,5 @@
-# from django.shortcuts import render
+import django.views.generic as generic_views
 
-# Create your views here.
+
+class DashboardView(generic_views.TemplateView):
+    template_name = "content_management/dashboard.html"

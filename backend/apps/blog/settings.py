@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -38,8 +38,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "treebeard",
-    'safedelete',
+    "safedelete",
     "apps.blog",
+    "apps.core",
     "apps.account",
     "apps.content_management",
 ]
@@ -59,7 +60,7 @@ ROOT_URLCONF = "apps.blog.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR,"templates/")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -121,6 +122,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
+
+# Media files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/4.2/howto/static-files/
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = f"{BASE_DIR}/media/"
+DEFAULT_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

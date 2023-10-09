@@ -5,15 +5,18 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('content_management', '0002_alter_blogarticle_node'),
+        ("content_management", "0002_alter_blogarticle_node"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='blogarticle',
-            name='node',
-            field=models.ForeignKey(limit_choices_to={'node_type': 3}, on_delete=django.db.models.deletion.CASCADE, to='content_management.blognode'),
+            model_name="blogarticle",
+            name="node",
+            field=models.ForeignKey(
+                limit_choices_to={"node_type": 3},
+                on_delete=django.db.models.deletion.CASCADE,
+                to="content_management.blognode",
+            ),
         ),
     ]
