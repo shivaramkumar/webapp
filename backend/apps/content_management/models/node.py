@@ -6,6 +6,11 @@ from apps.core.models import BaseModel
 
 
 class NodeType(models.IntegerChoices):
+    """
+    Args:
+        models (_type_): _description_
+    """
+
     SECTION = 1, "SECTION"
     SUBSECTION = 2, "SUBSECTION"
     ARTICLE = 3, "ARTICLE"

@@ -10,6 +10,14 @@ from apps.content_management.models.node import BlogNode
 
 
 class Image(BaseContentModel):
+    """
+    Args:
+        BaseContentModel (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
+
     _safedelete_policy = HARD_DELETE
     node = models.ForeignKey(
         BlogNode,
