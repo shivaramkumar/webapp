@@ -31,9 +31,7 @@ class BaseLanguageBasedContentModel(BaseContentModel):
 
     language_independent = models.BooleanField(
         default=False,
-        help_text=_(
-            "Select this option, if you want to disable language dependency instance wise"
-        ),
+        help_text=_("Select this option, if you want to disable language dependency instance wise"),
     )
     language_code = models.CharField(choices=settings.LANGUAGES, max_length=25)
 

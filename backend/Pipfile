@@ -5,13 +5,13 @@ name = "pypi"
 
 [packages]
 django-treebeard        = "==4.7.*"         # Django tree structure app           
-django                  = "==4.2.*"         # Django main package
+django                  = "==5.*"         # Django main package
 django-dirtyfields      = "==1.9.*"         # Django track changed fields in a model
 ambient-toolbox         = "==9.1.*"         # Ambient toolbox for web apps
 django-safedelete       = "==1.3.*"         # Django safedelete - configurable safe/ hard delete
 django-extensions       = "==3.2.*"         # Django cli extensions and slug implementation
-django-compressor = "==4.4.*"
-csscompressor = "==0.9.*"
+django-compressor       = "==4.4.*"
+csscompressor           = "==0.9.*"
 
 [dev-packages]
 black = "*"
