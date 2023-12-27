@@ -1,7 +1,6 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
-from django.utils.text import get_valid_filename
 from django.utils.translation import gettext as _
 
 from apps.content_management.models.node import BlogNode, NodeType
@@ -11,12 +10,6 @@ from apps.core.models import BaseModel
 class BaseContentModel(BaseModel):
     node = models.ForeignKey(BlogNode, on_delete=models.CASCADE)
 
-    @staticmethod
-    def upload_location(instance: models.Model, filename: str) -> str:
-        now = timezone.now()
-        data_sub_str = f"{now.year}/{now.month}/{now.day}"
-        return f"uploads/{instance._meta.default_related_name}/{data_sub_str}/{get_valid_filename(filename)}"
-
     def __str__(self) -> str:
         return f"{self.node}-content"
 
@@ -24,7 +17,7 @@ class BaseContentModel(BaseModel):
         abstract = True
 
 
-class BaseLanguageBasedContentModel(BaseContentModel):
+class BaseLanguageContentModel(BaseContentModel):
     """
     Base language model
     """
@@ -42,7 +35,7 @@ class BaseLanguageBasedContentModel(BaseContentModel):
         abstract = True
 
 
-class BaseTextContentModel(BaseLanguageBasedContentModel):
+class BaseTextContentModel(BaseLanguageContentModel):
     """
     Base text content model
     """
@@ -56,7 +49,7 @@ class BaseTextContentModel(BaseLanguageBasedContentModel):
         abstract = True
 
 
-class BaseUrlContentModel(BaseLanguageBasedContentModel):
+class BaseUrlContentModel(BaseLanguageContentModel):
     """
     Base url content model
     """

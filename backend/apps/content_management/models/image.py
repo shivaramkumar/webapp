@@ -5,11 +5,12 @@ from django_extensions.db.fields import AutoSlugField
 from safedelete import HARD_DELETE
 
 from apps.content_management.constants import ALLOWED_IMAGE_FILE_FORMATS
-from apps.content_management.models.content import BaseContentModel, NodeType
+from apps.content_management.models.content import BaseLanguageContentModel, NodeType
+from apps.content_management.models.core import upload_location
 from apps.content_management.models.node import BlogNode
 
 
-class Image(BaseContentModel):
+class Image(BaseLanguageContentModel):
     """
     Args:
         BaseContentModel (_type_): _description_
@@ -26,7 +27,7 @@ class Image(BaseContentModel):
     )
     caption = models.CharField(max_length=255, unique=True)
     file = models.FileField(
-        upload_to=BaseContentModel.upload_location,
+        upload_to=upload_location,
         validators=[FileExtensionValidator(ALLOWED_IMAGE_FILE_FORMATS)],
     )
     slug = AutoSlugField(null=True, default=None, unique=True, populate_from="caption")
