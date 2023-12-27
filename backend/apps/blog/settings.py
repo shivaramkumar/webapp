@@ -142,4 +142,4 @@ DEFAULT_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-AUTH_USER_MODEL = "apps.account.models.CustomUser"
+AUTH_USER_MODEL = "account.BlogUser"
