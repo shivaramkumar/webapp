@@ -1,4 +1,11 @@
 {
-    "python.pipenvPath": "/home/codespace/.local/share/virtualenvs/backend-6LEDqgKo/",
-    "terminal.integrated.cwd": "${workspaceFolder}/backend"
+    "terminal.integrated.cwd": "${workspaceFolder}/backend",
+    "python.pipenv.activateEnvInTerminal": "true",
+    "python.pipenv.defaultDevDependencies": [
+        "autopep8",
+        "flake8",
+        "mypy",
+        "black"
+    ],
+    "python.pipenv.defaultpath": "/home/codespace/.local/share/virtualenvs/backend-6LEDqgKo/"
 }
