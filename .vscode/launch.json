@@ -6,11 +6,6 @@
             "type": "python",
             "request": "launch",
             "program": "${workspaceFolder}/backend/manage.py",
-            "preLaunchTask": [
-                {
-                    "taskName": "start docker",
-                }
-            ],
             "env": {
                 "DB_NAME": "LOCAL",
                 "DB": "postgres://sk:mypassword@localhost:5434/doctool"

@@ -1,0 +1,5 @@
+#wrapper.toggled #sidebar-wrapper {
+    display: none;
+}#sidebar-wrapper {
+    transition: all 0.5s ease-out;
+}

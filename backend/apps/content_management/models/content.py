@@ -25,7 +25,7 @@ class BaseLanguageContentModel(BaseContentModel):
         default=False,
         help_text=_("Select this option, if you want to disable language dependency instance wise"),
     )
-    language_code = models.CharField(choices=settings.LANGUAGES, max_length=25)
+    language_code = models.CharField(choices=settings.LANGUAGES, max_length=25, default=settings.LANGUAGE_CODE)
 
     def __str__(self) -> str:
         return f"{self.node}-{self.language_code}-content"
@@ -62,6 +62,18 @@ class BaseUrlContentModel(BaseLanguageContentModel):
         abstract = True
 
 
+class Label(models.Model):
+    name = models.CharField(max_length=50)
+
+    class Meta:
+        verbose_name = _("Label")
+        verbose_name_plural = _("Labels")
+        default_related_name = "labels"
+
+    def __str__(self) -> str:
+        return self.name
+
+
 class BlogArticle(BaseTextContentModel):
     """
     BlogArticle
@@ -75,6 +87,11 @@ class BlogArticle(BaseTextContentModel):
         on_delete=models.CASCADE,
         limit_choices_to={"node_type": NodeType.ARTICLE},
     )
+    title = models.TextField(help_text=_("Enter the title of the article"), default=None, null=True)
+    labels = models.ManyToManyField(Label, blank=True, related_name="blog_articles", default=None)
+
+    def __str__(self) -> str:
+        return f"{self.title}-{self.language_code}-article"
 
     class Meta:
         verbose_name = _("Blog Article")

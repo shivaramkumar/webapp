@@ -7,4 +7,3 @@ class BlogArticleSerializer(serializers.ModelSerializer):
     class Meta:
         model = BlogArticle
         fields = '__all__'
-
