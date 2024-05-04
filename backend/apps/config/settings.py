@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     "compressor",
     "treebeard",
     "safedelete",
-    "apps.blog",
+    "apps.config",
     "apps.core",
     "apps.account",
     "apps.content_management",
@@ -59,7 +59,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "apps.blog.urls"
+ROOT_URLCONF = "apps.config.urls"
 
 TEMPLATES = [
     {
@@ -77,7 +77,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "apps.blog.wsgi.application"
+WSGI_APPLICATION = "apps.config.wsgi.application"
 
 
 # Database
