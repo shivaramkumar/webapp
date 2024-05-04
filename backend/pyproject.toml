@@ -7,7 +7,7 @@ skip-string-normalization = true
 include_trailing_comma = true
 
 [tool.ruff]
-select = [
+lint.select = [
     "E",       # pycodestyle errors
     "W",       # pycodestyle warnings
     "F",       # Pyflakes
@@ -27,7 +27,7 @@ select = [
     "PGH",     # No all-purpose "# noqa" and eval validation
     # "UP",      # PyUpgrade
 ]
-ignore = [
+lint.ignore = [
     'N999', # Project name contains underscore, not fixable
     'A003', # Django attributes shadow python builtins
     'DJ001', # Django model text-based fields shouldn't be nullable
@@ -37,7 +37,7 @@ ignore = [
 ]
 
 # Allow autofix for all enabled rules (when `--fix`) is provided.
-fixable = [
+lint.fixable = [
     "E",       # pycodestyle errors
     "W",       # pycodestyle warnings
     "F",       # Pyflakes
@@ -57,9 +57,9 @@ fixable = [
     "PGH",     # No all-purpose "# noqa" and eval validation
     # "UP",      # PyUpgrade
 ]
-unfixable = []
+lint.unfixable = []
 
-exclude = [
+lint.exclude = [
     ".bzr",
     ".direnv",
     ".eggs",
@@ -87,7 +87,7 @@ exclude = [
 line-length = 120
 
 # Allow unused variables when underscore-prefixed.
-dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+lint.dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 
 # Assume Python 3.10
 target-version = "py310"
