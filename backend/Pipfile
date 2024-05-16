@@ -14,13 +14,14 @@ django-compressor       = "==4.4.*"         # Django compressor for css and js
 csscompressor           = "==0.9.*"         # CSS compressor
 djangorestframework     = "*"               # Django rest framework   
 django-migration-zero   = "*"               # Django migration zero, reduce migration files to a single entry
-ambient-package-update  = "*"               # Ambient package update - manages code updates and setting up django project
+# !!!!! Add comment after adding new package
 
 [dev-packages]
 black = "*"
 isort = "*"
 ruff = "*"
 pre-commit = "*"
+ambient-package-update  = "*"               # Ambient package update - manages code updates and setting up django project
 
 [requires]
 python_version = "3.12"
