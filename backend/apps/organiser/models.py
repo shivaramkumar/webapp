@@ -13,7 +13,7 @@ from django.db import models
 
 
 class Event(models.Model):
-    title = models.CharField(max_length=200, default='',help_text='Title of the event')
+    title = models.CharField(max_length=200, default='', help_text='Title of the event')
     description = models.TextField()
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
@@ -24,10 +24,8 @@ class Event(models.Model):
         verbose_name_plural = 'Events'
         default_related_name = 'events'
 
-
     def __str__(self) -> str:
         return self.title
-
 
 
 class Task(models.Model):

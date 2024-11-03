@@ -7,5 +7,5 @@
         "mypy",
         "black"
     ],
-    "python.pipenv.defaultpath": "/home/codespace/.local/share/virtualenvs/backend-6LEDqgKo/"
+"python.pipenvPath": "/home/codespace/.local/share/virtualenvs/backend-6LEDqgKo/"
 }
