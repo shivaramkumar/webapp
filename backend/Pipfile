@@ -16,7 +16,8 @@ djangorestframework     = "*"               # Django rest framework
 django-migration-zero   = "*"               # Django migration zero, reduce migration files to a single entry
 celery                  = "*"
 django-environ          = "*"
-# !!!!! Add comment after adding new package
+psycopg2 = "*"
+# !!!!! Add comment after adding new package !!!!!
 
 [dev-packages]
 black = "*"

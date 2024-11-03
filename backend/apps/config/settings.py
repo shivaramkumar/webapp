@@ -18,7 +18,7 @@ import environ
 # Initialize environment variables
 env = environ.Env(
     # Set casting, default value
-    DEBUG=(bool, False)
+    DEBUG=(bool, False),
     # db config
     DATABASE_OPTION=(str, 'docker'),
 )
