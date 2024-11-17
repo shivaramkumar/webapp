@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM python:3.12 as builder
+FROM python:3.12 AS builder
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -19,6 +19,10 @@ FROM python:3.12
 # Set work directory
 WORKDIR /code
 
+# Copy the entrypoint script
+COPY entrypoint.sh ./entrypoint.sh
+RUN chmod +x ./entrypoint.sh
+
 # Copy requirements.txt from the previous stage
 COPY --from=builder /code/requirements.txt /code/
 
@@ -27,6 +31,9 @@ RUN pip install --no-cache-dir -r requirements.txt setuptools
 
 # Copy the current directory contents into the container at /code
 COPY . /code/
+
+# Set the entrypoint
+ENTRYPOINT ["/code/entrypoint.sh"]
 
 # Make port 8000 available to the world outside this container
 EXPOSE 8000

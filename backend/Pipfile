@@ -17,7 +17,6 @@ django-migration-zero   = "*"               # Django migration zero, reduce migr
 celery                  = "*"
 django-environ          = "*"
 psycopg2 = "*"
-# !!!!! Add comment after adding new package !!!!!
 
 [dev-packages]
 black = "*"
